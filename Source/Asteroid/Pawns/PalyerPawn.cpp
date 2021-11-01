@@ -7,7 +7,8 @@ APalyerPawn::APalyerPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	bUseControllerRotationPitch = true;
+	bUseControllerRotationYaw = true;
 
 	PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
 	SetRootComponent(PawnCollision);
@@ -48,6 +49,14 @@ void APalyerPawn::MoveRightLeft(float Axis){
 	AddMovementInput(GetActorRightVector(), Axis, false);
 }
 
+void APalyerPawn::LookForwardBack(float Axis){
+	AddControllerYawInput(-Axis);
+}
+
+void APalyerPawn::LookRightLeft(float Axis) {
+	AddControllerPitchInput(Axis);
+}
+
 // Called to bind functionality to input
 void APalyerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -57,6 +66,8 @@ void APalyerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	PlayerInputComponent->BindAxis("MoveForward/Back", this, &APalyerPawn::MoveForwardBack);
 	PlayerInputComponent->BindAxis("MoveRight/Left", this, &APalyerPawn::MoveRightLeft);
+	PlayerInputComponent->BindAxis("LookForward/Back", this, &APalyerPawn::LookForwardBack);
+	PlayerInputComponent->BindAxis("LookRight/Left", this, &APalyerPawn::LookRightLeft);
 
 }
 

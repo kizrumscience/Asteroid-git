@@ -30,6 +30,8 @@ protected:
 
 	void MoveForwardBack(float Axis);
 	void MoveRightLeft(float Axis);
+	void LookForwardBack(float Axis);
+	void LookRightLeft(float Axis);
 
 public:	
 	// Called every frame
@@ -37,7 +39,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category="Pawn")
 	UStaticMeshComponent* PawnMesh;
