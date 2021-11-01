@@ -3,7 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
+
 #include "GameFramework/Pawn.h"
+
 #include "PalyerPawn.generated.h"
 
 UCLASS()
@@ -25,5 +29,12 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category="Pawn")
+	UStaticMeshComponent* PawnMesh;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UBoxComponent* PawnCollision;
 
 };

@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-#include "Pawns/PalyerPawn.h"
+#include "PalyerPawn.h"
 
 // Sets default values
 APalyerPawn::APalyerPawn()
@@ -9,6 +8,14 @@ APalyerPawn::APalyerPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+
+	PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
+	SetRootComponent(PawnCollision);
+
+	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
+	PawnMesh->SetupAttachment(RootComponent);
+
+	
 }
 
 // Called when the game starts or when spawned
