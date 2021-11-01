@@ -51,6 +51,6 @@ public:
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UCameraComponent* PawnCamera;
 
-	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Controls")
 	UFloatingPawnMovement* PawnMovement;
 };
