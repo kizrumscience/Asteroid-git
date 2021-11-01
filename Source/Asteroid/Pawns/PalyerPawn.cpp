@@ -20,6 +20,8 @@ APalyerPawn::APalyerPawn()
 
 	PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
 	PawnCamera->SetupAttachment(CamSpringArm);
+
+	PawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>("PawnMovement");
 }
 
 // Called when the game starts or when spawned
@@ -36,10 +38,27 @@ void APalyerPawn::Tick(float DeltaTime)
 
 }
 
+void APalyerPawn::MoveForwardBack(float Axis){
+	UE_LOG(LogTemp, Warning, TEXT("Move Forward: %f"), Axis);
+	AddMovementInput(GetActorForwardVector(), Axis, false);
+}
+
+void APalyerPawn::MoveRightLeft(float Axis){
+	UE_LOG(LogTemp, Warning, TEXT("Move Right: %f"), Axis);
+	AddMovementInput(GetActorRightVector(), Axis, false);
+}
+
 // Called to bind functionality to input
 void APalyerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	//PlayerInputComponent->BindTouch(EInputEvent::IE_Pressed, this, &APlayerPawn::OnTouch)
+
+	PlayerInputComponent->BindAxis("MoveForward/Back", this, &APalyerPawn::MoveForwardBack);
+	PlayerInputComponent->BindAxis("MoveRight/Left", this, &APalyerPawn::MoveRightLeft);
+
 }
+
+
 

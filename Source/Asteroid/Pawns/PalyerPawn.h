@@ -6,6 +6,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
+#include "Components/InputComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Pawn.h"
 
@@ -23,6 +25,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	//void OnTouch(ETouchIndex::Type FingerIndex, FVector TouchLocation);
+
+	void MoveForwardBack(float Axis);
+	void MoveRightLeft(float Axis);
 
 public:	
 	// Called every frame
@@ -42,4 +49,7 @@ public:
 	USpringArmComponent* CamSpringArm;
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UCameraComponent* PawnCamera;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UFloatingPawnMovement* PawnMovement;
 };
