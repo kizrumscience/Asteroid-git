@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
-
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/Pawn.h"
 
 #include "PalyerPawn.generated.h"
@@ -37,4 +38,8 @@ public:
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UBoxComponent* PawnCollision;
 
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	USpringArmComponent* CamSpringArm;
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UCameraComponent* PawnCamera;
 };

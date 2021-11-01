@@ -15,7 +15,11 @@ APalyerPawn::APalyerPawn()
 	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
 	PawnMesh->SetupAttachment(RootComponent);
 
-	
+	CamSpringArm = CreateAbstractDefaultSubobject<USpringArmComponent>(TEXT("CamSpringArm"));
+	CamSpringArm->SetupAttachment(RootComponent);
+
+	PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
+	PawnCamera->SetupAttachment(CamSpringArm);
 }
 
 // Called when the game starts or when spawned
