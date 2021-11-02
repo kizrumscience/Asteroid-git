@@ -13,12 +13,16 @@ UShootComponent::UShootComponent():
 void UShootComponent::Shoot() {
 	UE_LOG(LogTemp, Log, TEXT("Shoot"))
 
-	FActorSpawnParameters SpawnParameters;
+	
+	for (FShootInfo& ShootInfo : ShootInfos) {
+		FActorSpawnParameters SpawnParameters;
+		FVector SpawnLocation = GetOwner()->GetActorLocation() + GetOwner()->GetActorRotation().RotateVector(ShootInfo.Offset);
 
-	FVector SpawnLocation = GetOwner()->GetActorLocation();
-	FRotator SpawnRotation = GetOwner()->GetActorRotation();
+		FRotator SpawnRotation = GetOwner()->GetActorRotation();
+		SpawnRotation.Add(0.f, ShootInfo.Angle, 0.f);
 
-	GetWorld()->SpawnActor<AShootProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, SpawnParameters);
+		GetWorld()->SpawnActor<AShootProjectile>(ShootInfo.ProjectileClass, SpawnLocation, SpawnRotation, SpawnParameters);
+	}
 }
 
 void UShootComponent::StartShooting() {

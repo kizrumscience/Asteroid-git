@@ -8,6 +8,20 @@
 #include "Components/ActorComponent.h"
 #include "ShootComponent.generated.h"
 
+USTRUCT(BlueprintType)
+struct FShootInfo {
+	GENERATED_BODY()
+public:
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
+	TSubclassOf<AShootProjectile> ProjectileClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Shooting")
+	FVector Offset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Shooting")
+	float Angle;
+};
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTEROID_API UShootComponent : public UActorComponent
@@ -25,8 +39,8 @@ public:
 	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
 	float ShootPeriod;
 
-	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
-	TSubclassOf<AShootProjectile> ProjectileClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Shooting")
+	TArray<FShootInfo> ShootInfos;
 
 protected:
 	// Called when the game starts

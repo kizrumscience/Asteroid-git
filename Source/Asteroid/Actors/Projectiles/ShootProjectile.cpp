@@ -8,7 +8,7 @@
 
 // Sets default values
 AShootProjectile::AShootProjectile():
-	ProjectileSpeed(100)
+	ProjectileSpeed(200)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
