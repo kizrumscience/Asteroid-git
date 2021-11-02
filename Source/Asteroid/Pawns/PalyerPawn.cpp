@@ -10,22 +10,6 @@ APalyerPawn::APalyerPawn()
 	bUseControllerRotationPitch = true;
 	bUseControllerRotationYaw = true;
 
-	/*PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
-	SetRootComponent(PawnCollision);
-
-	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
-	PawnMesh->SetupAttachment(RootComponent);
-
-	CamSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("CamSpringArm"));
-	CamSpringArm->SetupAttachment(RootComponent);
-
-	PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
-	PawnCamera->SetupAttachment(CamSpringArm);
-
-	PawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>("PawnMovement");
-
-	ShootComponent = CreateDefaultSubobject<UShootComponent>(TEXT("ShootComponent"));*/
-
 	SceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 
 	PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
@@ -60,12 +44,12 @@ void APalyerPawn::Tick(float DeltaTime)
 }
 
 void APalyerPawn::MoveForwardBack(float Axis){
-	UE_LOG(LogTemp, Warning, TEXT("Move Forward: %f"), Axis);
+	//UE_LOG(LogTemp, Warning, TEXT("Move Forward: %f"), Axis);
 	AddMovementInput(GetActorForwardVector(), Axis, false);
 }
 
 void APalyerPawn::MoveRightLeft(float Axis){
-	UE_LOG(LogTemp, Warning, TEXT("Move Right: %f"), Axis);
+	//UE_LOG(LogTemp, Warning, TEXT("Move Right: %f"), Axis);
 	AddMovementInput(GetActorRightVector(), Axis, false);
 }
 

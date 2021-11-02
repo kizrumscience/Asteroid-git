@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../Actors/Projectiles/ShootProjectile.h"
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "ShootComponent.generated.h"
@@ -16,7 +18,6 @@ public:
 	// Sets default values for this component's properties
 	UShootComponent();
 
-
 	UFUNCTION(BlueprintCallable, Category = "Shooting")
 	void StartShooting();
 	void StopShooting();
@@ -24,12 +25,14 @@ public:
 	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
 	float ShootPeriod;
 
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
+	TSubclassOf<AShootProjectile> ProjectileClass;
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 	void Shoot();
+
 	FTimerHandle ShootingTimer;
-		
 };
