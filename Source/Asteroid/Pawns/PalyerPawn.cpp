@@ -10,19 +10,39 @@ APalyerPawn::APalyerPawn()
 	bUseControllerRotationPitch = true;
 	bUseControllerRotationYaw = true;
 
-	PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
+	/*PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
 	SetRootComponent(PawnCollision);
 
 	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
 	PawnMesh->SetupAttachment(RootComponent);
 
-	CamSpringArm = CreateAbstractDefaultSubobject<USpringArmComponent>(TEXT("CamSpringArm"));
+	CamSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("CamSpringArm"));
 	CamSpringArm->SetupAttachment(RootComponent);
 
 	PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
 	PawnCamera->SetupAttachment(CamSpringArm);
 
 	PawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>("PawnMovement");
+
+	ShootComponent = CreateDefaultSubobject<UShootComponent>(TEXT("ShootComponent"));*/
+
+	SceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
+
+	PawnCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PawnCollision"));
+	SetRootComponent(PawnCollision);
+
+	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
+	PawnMesh->SetupAttachment(RootComponent);
+
+	CamSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("CamSpringArm"));
+	CamSpringArm->SetupAttachment(SceneComponent);
+
+	PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
+	PawnCamera->SetupAttachment(CamSpringArm);
+
+	PawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>("PawnMovement");
+
+	ShootComponent = CreateDefaultSubobject<UShootComponent>(TEXT("ShootComponent"));
 }
 
 // Called when the game starts or when spawned
@@ -50,11 +70,11 @@ void APalyerPawn::MoveRightLeft(float Axis){
 }
 
 void APalyerPawn::LookForwardBack(float Axis){
-	AddControllerYawInput(-Axis);
+	AddControllerYawInput(Axis);
 }
 
 void APalyerPawn::LookRightLeft(float Axis) {
-	AddControllerPitchInput(Axis);
+	AddControllerPitchInput(-Axis);
 }
 
 // Called to bind functionality to input

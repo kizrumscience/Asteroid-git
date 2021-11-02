@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../Components/ShootComponent.h"
+
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
@@ -44,6 +46,9 @@ public:
 	UStaticMeshComponent* PawnMesh;
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	USceneComponent* SceneComponent;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UBoxComponent* PawnCollision;
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
@@ -53,4 +58,7 @@ public:
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Controls")
 	UFloatingPawnMovement* PawnMovement;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Shooting")
+	UShootComponent* ShootComponent;
 };

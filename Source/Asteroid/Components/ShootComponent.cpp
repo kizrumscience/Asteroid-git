@@ -6,17 +6,17 @@
 #include "TimerManager.h"
 
 // Sets default values for this component's properties
-UShootComponent::UShootComponent(){
+UShootComponent::UShootComponent():
+	ShootPeriod(1.f){
 
 }
 
 void UShootComponent::Shoot() {
-
+	UE_LOG(LogTemp, Log, TEXT("Shoot"))
 }
 
 void UShootComponent::StartShooting() {
-	GetWorld()->GetTimerManager().SetTimer(ShootingTimer, this, 
-		&UShootComponent::Shoot, true, ShootPeriod);
+	GetWorld()->GetTimerManager().SetTimer(ShootingTimer, this, &UShootComponent::Shoot, true, 0.f);
 }
 
 void UShootComponent::StopShooting() {
