@@ -3,3 +3,6 @@
 
 #include "AsteroidGameModeBase.h"
 
+AAsteroidGameModeBase::AAsteroidGameModeBase() {
+	EnemySpawnController = CreateDefaultSubobject<UEnemySpawnController>(TEXT("EnemySpawnController"));
+}
