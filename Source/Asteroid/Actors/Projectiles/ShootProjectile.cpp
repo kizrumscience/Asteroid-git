@@ -14,19 +14,37 @@ AShootProjectile::AShootProjectile():
 	PrimaryActorTick.bCanEverTick = true;
 
 	Collision = CreateDefaultSubobject<USphereComponent>(TEXT("ProjectileCollision"));
-	SetRootComponent(Collision);
+	RootComponent = Collision;
+	Collision->SetCollisionObjectType(ECC_WorldDynamic);
+	Collision->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Collision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	Mesh->SetupAttachment(RootComponent);
 	Mesh->SetCollisionProfileName("NoCollision");
 
+	
+
+}
+
+void AShootProjectile::OnProjectileOverlap(
+	UPrimitiveComponent* OpelappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32_t BodyIndex,
+	bool Sweep, const FHitResult& Hit) {
+	UE_LOG(LogTemp, Log, TEXT("Overlap"))
 }
 
 // Called when the game starts or when spawned
 void AShootProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (GetOwner()) {
+		UE_LOG(LogTemp, Log, TEXT("Owner"))
+		// ignor interaction with owner
+		Collision->IgnoreActorWhenMoving(GetOwner(), true);
+	}
+	// dispatcher overlap
+	Collision->OnComponentBeginOverlap.AddDynamic(this, &AShootProjectile::OnProjectileOverlap);
 }
 
 // Called every frame

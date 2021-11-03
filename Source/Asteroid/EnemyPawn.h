@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
+
 #include "EnemyPawn.generated.h"
 
 UCLASS()
@@ -26,4 +29,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+		UStaticMeshComponent* EnemyMesh;
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UBoxComponent* EnemyCollision;
 };

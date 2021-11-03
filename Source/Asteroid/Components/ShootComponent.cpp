@@ -16,6 +16,7 @@ void UShootComponent::Shoot() {
 	
 	for (FShootInfo& ShootInfo : ShootInfos) {
 		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.Owner = GetOwner();
 		FVector SpawnLocation = GetOwner()->GetActorLocation() + GetOwner()->GetActorRotation().RotateVector(ShootInfo.Offset);
 
 		FRotator SpawnRotation = GetOwner()->GetActorRotation();
