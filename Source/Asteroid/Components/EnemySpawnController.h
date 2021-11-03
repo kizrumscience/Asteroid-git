@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../EnemyPawn.h"
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Engine/World.h"
@@ -15,7 +17,7 @@ struct FEnemySpawnInfo {
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Shooting")
-	TSubclassOf<APawn> EnemyClass = APawn::StaticClass();
+	TSubclassOf<AEnemyPawn> EnemyClass = AEnemyPawn::StaticClass();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Shooting")
 	FTransform SpawnTransform;
@@ -32,8 +34,7 @@ class ASTEROID_API UEnemySpawnController : public UActorComponent
 	GENERATED_BODY()
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemies")
-	TArray<FEnemySpawnInfo> SpawnInfos;
-
+	TArray<FEnemySpawnInfo> SpawnStages;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemies")
 	float StageMinDelay;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemies")
@@ -52,5 +53,6 @@ protected:
 
 	FTimerHandle ChangeStageTimer;
 	FTimerHandle EnemySpawnTimer;
+	FRandomStream Random; // struct for random
 	FEnemySpawnInfo SpawnStage;
 };
