@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "HealthComponent.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Components/StaticMeshComponent.h"
@@ -33,4 +35,6 @@ public:
 	UStaticMeshComponent* EnemyMesh;
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UBoxComponent* EnemyCollision;
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
+	UHealthComponent* HealthComponent;
 };

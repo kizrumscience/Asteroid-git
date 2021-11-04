@@ -17,6 +17,8 @@ AEnemyPawn::AEnemyPawn()
 	EnemyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("EnemyMesh"));
 	EnemyMesh->SetupAttachment(RootComponent);
 	EnemyMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>("HealthComponent");
 }
 
 // Called when the game starts or when spawned
