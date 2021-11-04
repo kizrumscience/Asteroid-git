@@ -2,7 +2,9 @@
 
 
 #include "ShootProjectile.h"
-
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/DamageType.h"
+#include "GameFramework/Pawn.h"
 
 #include "Components/StaticMeshComponent.h"
 
@@ -22,16 +24,23 @@ AShootProjectile::AShootProjectile():
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	Mesh->SetupAttachment(RootComponent);
 	Mesh->SetCollisionProfileName("NoCollision");
-
-	
-
 }
 
 void AShootProjectile::OnProjectileOverlap(
 	UPrimitiveComponent* OpelappedComp, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32_t BodyIndex,
 	bool Sweep, const FHitResult& Hit) {
-	UE_LOG(LogTemp, Log, TEXT("Overlap"))
+	if (!GetOwner()) {
+		return;
+	}
+	APawn* PawnOwner = Cast<APawn>(GetOwner());
+	if (!PawnOwner) {
+		return;
+	}
+
+	UGameplayStatics::ApplyDamage(OtherActor, Damage, PawnOwner->GetController(), this, UDamageType::StaticClass());
+
+	Destroy();
 }
 
 // Called when the game starts or when spawned

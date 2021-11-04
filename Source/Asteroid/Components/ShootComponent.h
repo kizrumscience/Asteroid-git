@@ -21,6 +21,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Shooting")
 	float Angle;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = "Shooting")
+	float Damage;
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )

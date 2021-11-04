@@ -30,7 +30,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
-		UStaticMeshComponent* EnemyMesh;
+	UStaticMeshComponent* EnemyMesh;
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Pawn")
 	UBoxComponent* EnemyCollision;
 };
