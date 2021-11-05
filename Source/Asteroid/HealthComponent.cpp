@@ -31,7 +31,7 @@ void UHealthComponent::ChangeHealth(float value) {
 	}
 }
 
-float UHealthComponent::GetHealth() {
+float UHealthComponent::GetHealth() const {
 	return Health;
 }
 

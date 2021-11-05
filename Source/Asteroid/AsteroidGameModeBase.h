@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/EnemySpawnController.h"
+#include "Components\GameAttempt.h"
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
@@ -19,4 +20,7 @@ public:
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Enemies")
 	UEnemySpawnController* EnemySpawnController;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Attempts")
+	UGameAttempt* GameAttempt;
 };

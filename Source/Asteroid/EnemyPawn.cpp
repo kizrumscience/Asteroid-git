@@ -26,6 +26,7 @@ void AEnemyPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	
 }
 
 // Called every frame
@@ -33,6 +34,9 @@ void AEnemyPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FRandomStream random_coordinate;
+	FVector MoveOffset = FVector(DeltaTime * random_coordinate.RandRange(0, 300), DeltaTime * random_coordinate.RandRange(0, 300), 0);
+	AddActorWorldOffset(MoveOffset);
 }
 
 // Called to bind functionality to input

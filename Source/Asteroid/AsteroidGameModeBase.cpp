@@ -5,4 +5,5 @@
 
 AAsteroidGameModeBase::AAsteroidGameModeBase() {
 	EnemySpawnController = CreateDefaultSubobject<UEnemySpawnController>(TEXT("EnemySpawnController"));
+	GameAttempt = CreateDefaultSubobject<UGameAttempt>(TEXT("GameAttemp"));
 }

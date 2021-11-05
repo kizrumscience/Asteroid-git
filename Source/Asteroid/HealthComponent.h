@@ -21,7 +21,7 @@ public:
 		void ChangeHealth(float value);
 
 	UFUNCTION(BlueprintCallable, Category = "Condition")
-		float GetHealth();
+		float GetHealth() const;
 
 protected:
 	// Called when the game starts
