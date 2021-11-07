@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+
 #include "GameAttempt.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttemptsEndedEvent);
@@ -22,7 +23,7 @@ public:
 	void ChangeAttempts(int value);
 
 	UFUNCTION(BlueprintPure, Category = "Game Attempts")
-	int GetHealths() const;
+	int GetAttempts() const;
 
 	UPROPERTY(BlueprintAssignable, Category = "Game Attempts")
 	FAttemptsEndedEvent AttemptsEnded;
@@ -35,4 +36,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Game Attempts")
 	int Attempts;
+
+	UFUNCTION()
+	void OnPlayerDamaged(AActor* DamagedActor, float Damage,
+			const UDamageType* DamageType, AController* inst, AActor* DamageCauser);
 };

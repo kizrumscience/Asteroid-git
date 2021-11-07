@@ -6,6 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 
@@ -23,6 +24,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void OnEnemyOverlap(AActor* OverlapedActor, AActor* OtherActor);
 
 public:	
 	// Called every frame

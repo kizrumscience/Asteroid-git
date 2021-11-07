@@ -42,6 +42,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	/*void RecieveAnyDamage(float Damage, const UDamageType* DamageType, 
+		AController* InstigatedBy, AActor* DamageCauser);*/
+
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category="Pawn")
 	UStaticMeshComponent* PawnMesh;
 
