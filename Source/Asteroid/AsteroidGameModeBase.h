@@ -21,6 +21,6 @@ public:
 	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Enemies")
 	UEnemySpawnController* EnemySpawnController;
 
-	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Attempts")
+	UPROPERTY(VisibleAnyWhere, BlueprintReadWriteOnly, Category = "Attempts")
 	UGameAttempt* GameAttempt;
 };

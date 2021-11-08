@@ -23,7 +23,7 @@ public:
 	void ChangeAttempts(int value);
 
 	UFUNCTION(BlueprintPure, Category = "Game Attempts")
-	int GetAttempts() const;
+	int GetAttempts();
 
 	UPROPERTY(BlueprintAssignable, Category = "Game Attempts")
 	FAttemptsEndedEvent AttemptsEnded;

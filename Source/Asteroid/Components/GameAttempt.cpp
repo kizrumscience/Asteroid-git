@@ -42,7 +42,7 @@ void UGameAttempt::ChangeAttempts(int value)
 	UE_LOG(LogTemp, Log, TEXT("Attempts:%i"), Attempts);
 }
 
-int UGameAttempt::GetAttempts() const
+int UGameAttempt::GetAttempts()
 {
 	return Attempts;
 }
